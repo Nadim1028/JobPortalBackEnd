@@ -8,14 +8,12 @@ using JobPortalBackEnd.Model;
 
 namespace JobPortalBackEnd.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class AdminController : ControllerBase
     {
-        [HttpPost("api/admin/signIn")]
+        [HttpPost("api/admin/login")]
         public IActionResult AdminSignIn([FromBody] Admin adminAuth)
         {
-            if (adminAuth.Username == "admin" && adminAuth.Password == "nadim123")
+            if (adminAuth.UserName == "admin" && adminAuth.Password == "nadim123")
             {
                 return Ok(true);
             }

@@ -23,7 +23,7 @@ namespace JobPortalBackEnd.Controllers
                 if (checker.Password == employer.Password)
                 {
                     Console.WriteLine("The user password is matched.");
-                    return Ok(checker);
+                    return Ok(true);
                 }
 
                 return Ok(false);

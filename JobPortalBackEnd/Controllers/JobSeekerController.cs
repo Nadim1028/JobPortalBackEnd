@@ -11,14 +11,41 @@ namespace JobPortalBackEnd.Controllers
     public class JobSeekerController : Controller
     {
         private readonly JobSeekerRepository jobSeekerRepository = new JobSeekerRepository();
-        
+        private readonly JobSeekerAuthRepository jobSeekerAuthRepository = new JobSeekerAuthRepository();
 
+
+
+        [HttpPost("api/jobseekerauth/login")]
+        public IActionResult LoginJobSeeker([FromBody] JobSeekerAuth jobSeekerAuth1)
+        {
+            var jobSeekerAuth = jobSeekerAuthRepository.GetByUserName(jobSeekerAuth1.UserName);
+            if (jobSeekerAuth != null)
+            {
+                if (jobSeekerAuth.Password == jobSeekerAuth1.Password)
+                {
+                    Console.WriteLine("The user password is matched.");
+                    return Ok(true);
+                }
+
+                return Ok(false);
+
+            }
+            return Ok(false);
+        }
 
         [HttpPost("api/jobseeker/add")]
         public IActionResult AddJobSeeker([FromBody] JobSeeker jobSeeker)
         {
             var addedJobSeeker = jobSeekerRepository.Add(jobSeeker);
-            return Ok(addedJobSeeker);
+            return Ok(true);
+        }
+
+
+        [HttpPost("api/jobseekerauth/add")]
+        public IActionResult AddJobSeekerAuth([FromBody] JobSeekerAuth jobSeekerAuth)
+        {
+            var addedJobSeekerAuth = jobSeekerAuthRepository.Add(jobSeekerAuth);
+            return Ok(true);
         }
 
         [HttpGet("api/jobseeker/getById")]

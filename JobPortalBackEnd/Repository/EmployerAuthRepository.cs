@@ -22,12 +22,17 @@ namespace JobPortalBackEnd.Repository
 
         public EmployerAuth GetEmployerAuthById(int employerAuthId)
         {
-            return DatabaseContext.EmployerAuthTable.SingleOrDefault(EmployerAuth => EmployerAuth.Id == employerAuthId);
+            return DatabaseContext.EmployerAuthTable.SingleOrDefault(employerAuth => employerAuth.Id == employerAuthId);
         }
 
-        public EmployerAuth GetByEmail(string Email)
+        public EmployerAuth GetByEmail(string email)
         {
-            return DatabaseContext.EmployerAuthTable.SingleOrDefault(EmployerAuth => EmployerAuth.Email == Email);
+            return DatabaseContext.EmployerAuthTable.SingleOrDefault(employerAuth => employerAuth.Email == email);
+        }
+
+        public EmployerAuth GetByUserName(string username)
+        {
+            return DatabaseContext.EmployerAuthTable.SingleOrDefault(employerAuth => employerAuth.UserName == username);
         }
 
         public EmployerAuth Update(EmployerAuth employerAuth)
