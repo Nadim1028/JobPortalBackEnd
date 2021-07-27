@@ -18,7 +18,7 @@ namespace JobPortalBackEnd.Controllers
         public IActionResult AddJob([FromBody] Job job)
         {
             var addedJob = jobRepository.Add(job);
-            return Ok(addedJob);
+            return Ok(true);
         }
 
         [HttpGet("api/job/getById")]
@@ -38,7 +38,8 @@ namespace JobPortalBackEnd.Controllers
         [HttpPost("api/job/update")]
         public IActionResult UpdaterJob([FromBody] Job job)
         {
-            return Ok(jobRepository.Update(job));
+            var updatedJob = jobRepository.Update(job);
+            return Ok(true);
         }
 
         [HttpDelete("api/job/delete")]

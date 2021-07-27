@@ -15,7 +15,7 @@ namespace JobPortalBackEnd.Model
         public int Id { get; set; }
 
         public string JobDetails { get; set; }
-        public string JobType { get; set; }
+        public string JobTitle{ get; set; }
         public string Vacancy { get; set; }
         public string EmploymentStatus { get; set; }
         public string Experience { get; set; }
@@ -23,6 +23,20 @@ namespace JobPortalBackEnd.Model
         public string Age { get; set; }
         public string JobLocation { get; set; }
         public string Salary { get; set; }
-        public DateTime Deadline { get; set; }
+        public string Deadline { get; set; }
     }
 }
+
+/*
+ 
+JobDetails
+JobTitle
+Vacancy
+EmploymentStatus
+Experience
+Gender
+Age
+JobLocation
+Salary
+Deadline
+ */

@@ -11,16 +11,17 @@ namespace JobPortalBackEnd.Controllers
     public class EmployerController : Controller
     {
         private readonly EmployerRepository employerRepository = new EmployerRepository();
+        private readonly EmployerAuthRepository employerAuthRepository = new EmployerAuthRepository();
 
 
 
-        [HttpPost("api/employer/login")]
-        public IActionResult LoginEmployer([FromBody] Employer employer)
+        [HttpPost("api/employerauth/login")]
+        public IActionResult LoginEmployer([FromBody] EmployerAuth employerAuth)
         {
-            var checker = employerRepository.GetByUserName(employer.UserName);
+            var checker = employerAuthRepository.GetByUserName(employerAuth.UserName);
             if (checker != null)
             {
-                if (checker.Password == employer.Password)
+                if (checker.Password == employerAuth.Password)
                 {
                     Console.WriteLine("The user password is matched.");
                     return Ok(true);
@@ -32,11 +33,19 @@ namespace JobPortalBackEnd.Controllers
             return Ok(false);
         }
 
+
+        [HttpPost("api/employerauth/add")]
+        public IActionResult AddEmployerAuth([FromBody] EmployerAuth employerAuth)
+        {
+            var addedEmployerAuth = employerAuthRepository.Add(employerAuth);
+            return Ok(true);
+        }
+
         [HttpPost("api/employer/add")]
         public IActionResult AddEmployer([FromBody] Employer employer)
         {
             var addedEmployer = employerRepository.Add(employer);
-            return Ok(addedEmployer);
+            return Ok(true);
         }
 
 
