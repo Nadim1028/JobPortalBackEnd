@@ -23,8 +23,9 @@ namespace JobPortalBackEnd.Controllers
             {
                 if (checker.Password == employerAuth.Password)
                 {
+                   // var result = employerRepository.GetByUserName(employerAuth.UserName);
                     Console.WriteLine("The user password is matched.");
-                    return Ok(true);
+                    return Ok(checker);
                 }
 
                 return Ok(false);

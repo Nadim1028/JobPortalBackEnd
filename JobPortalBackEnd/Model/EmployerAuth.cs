@@ -20,3 +20,11 @@ namespace JobPortalBackEnd.Model
     }
 }
 
+/*
+ public Id
+public UserName
+public Email
+public RePassword
+public Password
+ 
+ */

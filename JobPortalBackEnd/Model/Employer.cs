@@ -26,3 +26,16 @@ namespace JobPortalBackEnd.Model
         public string ConfirmationPassword { get; set; }
     }
 }
+
+/*
+public UserName
+public CompanyName
+public CompanyAddress
+public IndustryType
+public CompanyEmail
+public CompanyContactNo
+public YearOfEstablishment
+public TradeLicenseNo
+public Password
+public ConfirmationPassword
+ */

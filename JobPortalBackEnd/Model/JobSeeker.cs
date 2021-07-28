@@ -14,7 +14,17 @@ namespace JobPortalBackEnd.Model
         public string Gender { get; set; }
         public string Email { get; set; }
         public string MobileNum { get; set; }
-        public string Password { get; set; }
-        public string ConfirmationPassword { get; set; }
+        public string Address { get; set; }
+       
     }
 }
+
+/*
+ public FirstName
+ public LastName
+public Gender
+public Email
+public MobileNum
+public Address
+
+ */

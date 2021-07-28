@@ -31,6 +31,30 @@ namespace JobPortalBackEnd.Repository
             return DatabaseContext.Jobs.SingleOrDefault(job => job.Id == jobId);
         }
 
+        public Job GetBySearchKey(string searchKey)
+        {
+            /*foreach (var student in DatabaseContext.Students)
+            {
+                if (student.Id == studentId)
+                {
+                    return student;
+                }
+                
+            }
+
+            return null;*/
+
+            return DatabaseContext.Jobs.SingleOrDefault(job => job.JobTitle == searchKey);
+        }
+
+        public IEnumerable<Job> GetByJobTitle(string jobTitle)
+        {
+            if (string.IsNullOrWhiteSpace(jobTitle))
+                return GetAll();
+            jobTitle = jobTitle.Trim();
+            return DatabaseContext.Jobs.Where(c => c.JobTitle == jobTitle).ToList();
+        }
+
         public List<Job> GetAll()
         {
             return DatabaseContext.Jobs.ToList();

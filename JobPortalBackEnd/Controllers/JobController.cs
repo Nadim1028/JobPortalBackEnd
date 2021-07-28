@@ -29,6 +29,15 @@ namespace JobPortalBackEnd.Controllers
         }
 
 
+        [HttpGet("api/job/getByJobTitle")]
+        public IActionResult GetJobFilterByJobTitle([FromQuery]string jobTitle)
+        {
+            IEnumerable<Job> jobs = jobRepository.GetByJobTitle(jobTitle);
+
+            return Ok(jobs);
+        }
+
+
         [HttpGet("api/job/getAll")]
         public IActionResult GetAllJobs()
         {
@@ -47,7 +56,7 @@ namespace JobPortalBackEnd.Controllers
         {
             var job = jobRepository.GetById(jobId);
             jobRepository.Delete(job);
-            return Ok();
+            return Ok(true);
         }
     }
 }
