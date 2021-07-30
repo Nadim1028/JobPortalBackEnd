@@ -65,10 +65,10 @@ namespace JobPortalBackEnd.Controllers
             return Ok(employerRepository.GetAll());
         }
 
-        [HttpPost("api/employer/update")]
-        public IActionResult UpdateEmployer([FromBody] Employer employer)
+        [HttpPost("api/employerauth/update")]
+        public IActionResult UpdateEmployer([FromBody] EmployerAuth employerAuth)
         {
-            return Ok(employerRepository.Update(employer));
+            return Ok(employerAuthRepository.Update(employerAuth));
         }
 
         [HttpDelete("api/employer/delete")]

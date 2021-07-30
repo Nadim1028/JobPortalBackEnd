@@ -14,17 +14,29 @@ namespace JobPortalBackEnd.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string UserName { get; set; }
-        public string Email { get; set; }
+        public string CompanyEmail { get; set; }
         public string RePassword { get; set; }
         public string Password { get; set; }
+        public string CompanyName { get; set; }
+        public string CompanyAddress { get; set; }
+        public string IndustryType { get; set; }
+        public string CompanyContactNo { get; set; }
+        public string YearOfEstablishment { get; set; }
+        public string TradeLicenseNo { get; set; }
     }
 }
 
 /*
- public Id
+public Id
 public UserName
-public Email
+public CompanyEmail
 public RePassword
 public Password
+public CompanyName
+public CompanyAddress
+public IndustryType
+public CompanyContactNo
+public YearOfEstablishment
+public TradeLicenseNo
  
  */

@@ -4,14 +4,16 @@ using JobPortalBackEnd.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JobPortalBackEnd.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210729133742_JobInfoJobSeekerInfoClassNotUsed")]
+    partial class JobInfoJobSeekerInfoClassNotUsed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,6 +76,9 @@ namespace JobPortalBackEnd.Migrations
                     b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("IndustryType")
                         .HasColumnType("nvarchar(max)");
 
@@ -110,9 +115,6 @@ namespace JobPortalBackEnd.Migrations
                     b.Property<string>("Deadline")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EmployerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("EmploymentStatus")
                         .HasColumnType("nvarchar(max)");
 
@@ -122,7 +124,7 @@ namespace JobPortalBackEnd.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("JobDetailsFilePath")
+                    b.Property<string>("JobDetails")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("JobLocation")
@@ -131,17 +133,14 @@ namespace JobPortalBackEnd.Migrations
                     b.Property<string>("JobTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("JobType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("PublishedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Salary")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Vacancy")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("publishedDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -175,6 +174,12 @@ namespace JobPortalBackEnd.Migrations
 
                     b.Property<int>("JobSeekerId")
                         .HasColumnType("int");
+
+                    b.Property<string>("JobTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("JobType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

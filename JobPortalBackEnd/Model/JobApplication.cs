@@ -17,11 +17,24 @@ namespace JobPortalBackEnd.Model
         public int JobSeekerId { get; set; }
         public int EmployerId { get; set; }
         public string CompanyName { get; set; }
-        public string JobTitle { get; set; }
-        public string JobType { get; set; }
         public string Filepath { get; set; }
         public string JobLocation { get; set; }
-        public DateTime Deadline { get; set; }
         public string ApplicationDeadline { get; set; }
+
     }
 }
+
+/*
+  public Id
+  public JobId
+  public JobSeekerId
+  public EmployerId
+  public CompanyName
+  public JobTitle
+  public JobType
+  public Filepath
+  public JobLocation
+  public ApplicationDeadline
+ */
+
+

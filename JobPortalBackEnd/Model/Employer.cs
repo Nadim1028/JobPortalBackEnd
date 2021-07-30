@@ -22,8 +22,7 @@ namespace JobPortalBackEnd.Model
         public string CompanyContactNo { get; set; }
         public string YearOfEstablishment { get; set; }
         public string TradeLicenseNo { get; set; }
-        public string Password { get; set; }
-        public string ConfirmationPassword { get; set; }
+        
     }
 }
 
@@ -36,6 +35,5 @@ public CompanyEmail
 public CompanyContactNo
 public YearOfEstablishment
 public TradeLicenseNo
-public Password
-public ConfirmationPassword
+
  */

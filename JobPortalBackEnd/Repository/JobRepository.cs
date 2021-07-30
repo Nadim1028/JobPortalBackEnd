@@ -60,6 +60,11 @@ namespace JobPortalBackEnd.Repository
             return DatabaseContext.Jobs.ToList();
         }
 
+        public List<Job> GetAllByEmployerId(int employerId)
+        {
+            return DatabaseContext.Jobs.Where(x => x.EmployerId == employerId).ToList();
+        }
+
         public Job Update(Job job)
         {
             DatabaseContext.Jobs.Update(job);

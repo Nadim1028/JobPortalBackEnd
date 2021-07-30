@@ -27,7 +27,7 @@ namespace JobPortalBackEnd.Repository
 
         public EmployerAuth GetByEmail(string email)
         {
-            return DatabaseContext.EmployerAuthTable.SingleOrDefault(employerAuth => employerAuth.Email == email);
+            return DatabaseContext.EmployerAuthTable.SingleOrDefault(employerAuth => employerAuth.CompanyEmail == email);
         }
 
         public EmployerAuth GetByUserName(string username)

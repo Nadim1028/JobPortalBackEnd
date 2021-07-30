@@ -24,7 +24,7 @@ namespace JobPortalBackEnd.Controllers
                 if (jobSeekerAuth.Password == jobSeekerAuth1.Password)
                 {
                     Console.WriteLine("The user password is matched.");
-                    return Ok(true);
+                    return Ok(jobSeekerAuth);
                 }
 
                 return Ok(false);
@@ -60,6 +60,12 @@ namespace JobPortalBackEnd.Controllers
         public IActionResult GetAllJobSeekers()
         {
             return Ok(jobSeekerRepository.GetAll());
+        }
+
+        [HttpPost("api/jobseekerauth/update")]
+        public IActionResult UpdateJobSeekerAuth([FromBody] JobSeekerAuth jobSeekerAuth)
+        {
+            return Ok(jobSeekerAuthRepository.Update(jobSeekerAuth));
         }
 
         [HttpPost("api/jobseeker/update")]
