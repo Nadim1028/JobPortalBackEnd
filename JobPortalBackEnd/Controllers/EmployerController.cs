@@ -39,7 +39,13 @@ namespace JobPortalBackEnd.Controllers
         public IActionResult AddEmployerAuth([FromBody] EmployerAuth employerAuth)
         {
             var addedEmployerAuth = employerAuthRepository.Add(employerAuth);
-            return Ok(true);
+            if (addedEmployerAuth != null)
+            {
+                return Ok(true);
+            }
+
+            else
+                return Ok(false);
         }
 
         [HttpPost("api/employer/add")]
@@ -58,11 +64,12 @@ namespace JobPortalBackEnd.Controllers
             return Ok(employer);
         }
 
-
-        [HttpGet("api/employer/getAll")]
-        public IActionResult GetAllEmployers()
+        
+        [HttpGet("api/employerauth/getAll")]
+        public IActionResult GetAllEmployersAuth()
         {
-            return Ok(employerRepository.GetAll());
+            IEnumerable<EmployerAuth> employerAuths = employerAuthRepository.GetAll();
+            return Ok(employerAuths);
         }
 
         [HttpPost("api/employerauth/update")]
@@ -77,6 +84,14 @@ namespace JobPortalBackEnd.Controllers
             var employer = employerRepository.GetById(employerId);
             employerRepository.Delete(employer);
             return Ok();
+        }
+
+        [HttpDelete("api/employerAuth/delete")]
+        public IActionResult DeleteEmployerAuth(int employerAuthId)
+        {
+            var employerAuth = employerAuthRepository.GetById(employerAuthId);
+            employerAuthRepository.Delete(employerAuth);
+            return Ok(true);
         }
     }
 }

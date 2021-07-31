@@ -20,6 +20,11 @@ namespace JobPortalBackEnd.Repository
             return databaseContext.StudentAuthTable.ToList();
         }*/
 
+        public List<EmployerAuth> GetAll()
+        {
+            return DatabaseContext.EmployerAuthTable.ToList();
+        }
+
         public EmployerAuth GetEmployerAuthById(int employerAuthId)
         {
             return DatabaseContext.EmployerAuthTable.SingleOrDefault(employerAuth => employerAuth.Id == employerAuthId);
@@ -28,6 +33,12 @@ namespace JobPortalBackEnd.Repository
         public EmployerAuth GetByEmail(string email)
         {
             return DatabaseContext.EmployerAuthTable.SingleOrDefault(employerAuth => employerAuth.CompanyEmail == email);
+        }
+
+        public EmployerAuth GetById(int employerId)
+        {
+            
+            return DatabaseContext.EmployerAuthTable.SingleOrDefault(employerAuth => employerAuth.Id == employerId);
         }
 
         public EmployerAuth GetByUserName(string username)
@@ -42,9 +53,14 @@ namespace JobPortalBackEnd.Repository
             return employerAuth;
         }
 
-        public bool Delete(int employerAuthId)
+        public bool Delete(EmployerAuth employerAuth)
         {
-            DatabaseContext.EmployerAuthTable.Remove(GetEmployerAuthById(employerAuthId));
+            if (employerAuth == null)
+            {
+                Console.WriteLine("Your job id is null");
+                return true;
+            }
+            DatabaseContext.EmployerAuthTable.Remove(employerAuth);
             DatabaseContext.SaveChanges();
             return true;
         }

@@ -56,10 +56,13 @@ namespace JobPortalBackEnd.Controllers
         }
 
 
-        [HttpGet("api/jobseeker/getAll")]
+        [HttpGet("api/jobseekerAuth/getAll")]
         public IActionResult GetAllJobSeekers()
         {
-            return Ok(jobSeekerRepository.GetAll());
+            IEnumerable<JobSeekerAuth> jobSeekerAuths = jobSeekerAuthRepository.GetAll();
+            return Ok(jobSeekerAuths);
+
+            
         }
 
         [HttpPost("api/jobseekerauth/update")]
@@ -80,6 +83,15 @@ namespace JobPortalBackEnd.Controllers
             var jobSeeker = jobSeekerRepository.GetById(jobSeekerId);
             jobSeekerRepository.Delete(jobSeeker);
             return Ok();
+        }
+
+
+        [HttpDelete("api/jobseekerAuth/delete")]
+        public IActionResult DeleteEmployerAuth(int jobseekerAuthId)
+        {
+            var jobseekerAuth = jobSeekerAuthRepository.GetById(jobseekerAuthId);
+            jobSeekerAuthRepository.Delete(jobseekerAuth);
+            return Ok(true);
         }
     }
 }

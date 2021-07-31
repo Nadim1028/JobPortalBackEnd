@@ -16,12 +16,23 @@ namespace JobPortalBackEnd.Repository
                 return jobSeekerAuth;
             }
 
-            public List<JobSeekerAuth> GetAllJobSeekersAuth()
+            public List<JobSeekerAuth> GetAll()
             {
                 return DatabaseContext.JobSeekerAuthTable.ToList();
             }
 
-            public JobSeekerAuth GetJobSeekerAuthById(int jobSeekerAuthId)
+        public List<JobSeekerAuth> GetAllJobSeekersAuth()
+            {
+                return DatabaseContext.JobSeekerAuthTable.ToList();
+            }
+
+            public JobSeekerAuth GetById(int jobseekerAuthId)
+            {
+
+                return DatabaseContext.JobSeekerAuthTable.SingleOrDefault(jobseekerAuth => jobseekerAuth.Id == jobseekerAuthId);
+            }
+
+        public JobSeekerAuth GetJobSeekerAuthById(int jobSeekerAuthId)
             {
                 return DatabaseContext.JobSeekerAuthTable.SingleOrDefault(jobSeekerAuth => jobSeekerAuth.Id == jobSeekerAuthId);
             }
@@ -43,11 +54,11 @@ namespace JobPortalBackEnd.Repository
                 return jobSeekerAuth;
             }
 
-            public bool Delete(int jobSeekerAuthId)
+            public bool Delete(JobSeekerAuth jobSeekerAuth)
             {
-                DatabaseContext.JobSeekerAuthTable.Remove(GetJobSeekerAuthById(jobSeekerAuthId));
-                DatabaseContext.SaveChanges();
-                return true;
-            }
+            DatabaseContext.JobSeekerAuthTable.Remove(jobSeekerAuth);
+            DatabaseContext.SaveChanges();
+            return true;
+        }
     }
 }

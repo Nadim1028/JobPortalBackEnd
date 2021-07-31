@@ -35,6 +35,17 @@ namespace JobPortalBackEnd.Model
   public Filepath
   public JobLocation
   public ApplicationDeadline
+
+   Id
+   JobId
+   JobSeekerId
+   EmployerId
+   CompanyName
+   JobTitle
+   JobType
+   Filepath
+   JobLocation
+   ApplicationDeadline
  */
 
 

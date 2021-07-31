@@ -22,3 +22,4 @@ namespace JobPortalBackEnd.Controllers
         }
     }
 }
+//C:\Users\bsse1\source\repos\JobPortalBackEnd\JobPortalBackEnd\Controllers\AdminController.cs

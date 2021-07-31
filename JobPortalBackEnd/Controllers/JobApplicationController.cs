@@ -16,8 +16,17 @@ namespace JobPortalBackEnd.Controllers
         [HttpPost("api/jobApplication/add")]
         public IActionResult AddJobApplication([FromBody] JobApplication jobApplication)
         {
-            var addedJobApplication = jobApplicationRepository.Add(jobApplication);
-            return Ok(addedJobApplication);
+            if (jobApplication != null)
+            {
+                var addedJobApplication = jobApplicationRepository.Add(jobApplication);
+                return Ok(true);
+            }
+
+            else
+            {
+                return Ok(false);
+            }
+            
         }
 
         [HttpGet("api/jobApplication/getById")]
