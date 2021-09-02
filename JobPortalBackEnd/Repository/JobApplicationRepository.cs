@@ -35,7 +35,13 @@ namespace JobPortalBackEnd.Repository
         {
             return DatabaseContext.JobApplications.ToList();
         }
-        
+
+
+        public List<JobApplication> GetAllByEmployerId(int employerId)
+        {
+            return DatabaseContext.JobApplications.Where(x => x.EmployerId == employerId).ToList();
+        }
+
         public JobApplication Update(JobApplication jobApplication)
         {
             DatabaseContext.JobApplications.Update(jobApplication);

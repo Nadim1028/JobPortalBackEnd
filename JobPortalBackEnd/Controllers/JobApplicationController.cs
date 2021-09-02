@@ -37,10 +37,19 @@ namespace JobPortalBackEnd.Controllers
         }
 
 
+        /* [HttpGet("api/job/getAll")]
+                public IActionResult GetAllJobs()
+                {
+                    IEnumerable<Job> jobs = jobRepository.GetAll();
+                    return Ok(jobs);//IEnumerable<Jobpost> jobs = _dataRepository.GetAll()
+
+                }*/
+
         [HttpGet("api/jobApplication/getAll")]
         public IActionResult GetAllJobApplications()
         {
-            return Ok(jobApplicationRepository.GetAll());
+            IEnumerable<JobApplication> jobApplications= jobApplicationRepository.GetAll();
+            return Ok(jobApplications);
         }
 
         [HttpPost("api/jobApplication/update")]
@@ -55,6 +64,15 @@ namespace JobPortalBackEnd.Controllers
             var jobApplication = jobApplicationRepository.GetById(jobApplicationId);
             jobApplicationRepository.Delete(jobApplication);
             return Ok();
+        }
+
+
+        [HttpGet("api/jobApplication/getApplicationsByEmployerId")]
+        public IActionResult GetAllJobsByEmployerId(int employerId)
+        {
+            IEnumerable<JobApplication> jobApplications = jobApplicationRepository.GetAllByEmployerId(employerId);
+            return Ok(jobApplications);
+
         }
     }
 }
